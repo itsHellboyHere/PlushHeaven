@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import day from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
@@ -7,15 +7,16 @@ day.extend(advancedFormat);
 
 const OrdersList = () => {
     const { orders, meta } = useLoaderData();
-    console.log(meta.page);
+   
+ 
     return (
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="align-element mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {orders.map((order) => {
                 const { name, address, createdAt, orderItems = [], total , status} = order;
                 const date = day(createdAt).format('hh:mm a - MMM Do, YYYY');
 
                 return (
-                    <section key={order._id} className="border rounded-md overflow-hidden bg-gray-100 shadow-lg p-4 transform transition-transform hover:scale-105">
+                    <section key={order._id} className="border rounded-md overflow-hidden bg-gray-200 shadow-lg p-4 transform transition-transform hover:scale-105">
                         <div className="p-4">
                             <h3 className="text-lg font-semibold capitalize">{status}</h3>
                             <h2 className="text-lg font-semibold">{name}</h2>
@@ -23,7 +24,7 @@ const OrdersList = () => {
                         </div>
                         <div className="p-4 font-mono text-2xl">
                             <p className="text-sm text-gray-600"><span className=" font-bold">Order Date: </span>{date}</p>
-                            <p className="text-sm text-gray-600"><span className="font-bold">Total Cost:</span> {formatPrice(total)}</p>
+                            <p className="text-sm text-gray-600"><span className="font-bold">Total Cost:</span> {formatPrice(total/100)}</p>
                             <div className="mt-4 grid grid-cols-1 gap-2">
                                 {orderItems.map((item, index) => (
                                     <div key={index} className="flex items-center">

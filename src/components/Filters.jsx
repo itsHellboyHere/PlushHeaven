@@ -3,25 +3,21 @@ import FormInput from  './Forminput'
 import FormSelect from './FormSelect';
 import FormRange from './FormRange';
 import FormCheckbox from './FormCheckbox';
+import { useSelector } from 'react-redux';
 
 const Filters = () => {
   const  {meta,params}= useLoaderData()
+  const user = useSelector((state) => state.userState.user);
 
-  const {name,company ,category ,freeShipping,sort,priceRange} =params
-  console.log(name,company,category,freeShipping,sort,priceRange);
-  console.log(params);
-  
+  const {name,company ,category,freeShipping,sort,priceRange} =params
+
   return (
-    <Form className='bg-base-200 rounded-md px-8 py-4 grid gap-x-4 gap-y-8 sm:
+    <Form className='align-element bg-base-200 rounded-md px-8 py-4 grid gap-x-2 gap-y-3 sm:
     grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
 
-      {/* SEARCH */}
-      <FormInput type='search' label='search product' name='name' size='input-sm' 
-      defaultValue={name}
-      />
       {/* CATEGORIES */}
-       <FormSelect label='select cateogry'
-      name='cateogry' list={meta.categories}
+       <FormSelect label='select category'
+      name='category' list={meta.categories}
       size='select-sm'
       defaultValue={category}
       ></FormSelect>
@@ -38,17 +34,27 @@ const Filters = () => {
       defaultValue={sort}
       ></FormSelect>
       {/* PRICE */}
-      <FormRange name='priceRange' label='select price' size='range-sm'
+      <FormRange name='priceRange' label='price range' size='range-sm'
       price={priceRange}></FormRange>
+      {/* SEARCH */}
+      <FormInput type='search' label='search product' name='name' size='input-sm' 
+      defaultValue={name}
+      
+      />
       {/* SHIPPING */}
       <FormCheckbox name='freeShipping' label='free shipping'  size ='checkbox-sm'
       defaultValue={freeShipping} />
       
       {/* BUTTONS */}
-      <button type='submit' className='btn btn-primary btn-sm'>
+      <button type='submit' className='btn btn-secondary btn-sm text-white'>
         search
       </button>
-      <Link to='/products' className='btn btn-accent btn-sm'>reset</Link>
+      {user?.role==='seller'?(
+           <Link to='/seller' className='btn btn-error btn-sm'>reset</Link>
+      ):(
+         <Link to='/products' className='btn btn-error btn-sm'>reset</Link>
+      )}
+     
     </Form>
   )
 }

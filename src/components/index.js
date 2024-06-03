@@ -12,8 +12,16 @@ export { default as PaginationContainer } from './PaginationContainer';
 export { default as Loading } from './Loading';
 export { default as CartTotals } from './CartTotals';
 export { default as CartItemsList } from './CartItemsList';
-export { default as CheckoutForm } from './CheckoutForm';
+export { default as StripeCheckOut } from './StripeCheckOut';
 export { default as OrdersList } from './OrdersList';
 export { default as ComplexPaginationContainer } from './ComplexPaginationConatiner';
 export { default as FeaturesGrid } from './FeaturesGrid';
 export { default as CreateProduct } from './CreateProduct';
+export { default as FormDesc } from './FormDesc';
+export { default as Footer } from './Footer';
+export { default as Services } from './Services'
+export { default as UpdateUserModal } from './UpdateUserModal'
+export { default as DashBoardCom } from './DashBoardCom'
+export { default as SellerHome } from './SellerHome'
+export { default as Foot } from '../components/Foot'
+export { default as EditProduct } from '../components/EditProduct'

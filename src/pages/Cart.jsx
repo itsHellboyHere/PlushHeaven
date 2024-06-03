@@ -4,20 +4,20 @@ import { CartItemsList ,SectionTitle ,CartTotals } from "../components"
 import { Link } from "react-router-dom"
 import {toast} from 'react-toastify'
 import { redirect } from "react-router-dom"
-// export const loader = (store) =>{
-//   const user = store.getState().userState.user;
-//   console.log(user);
-//   if(user.role==='admin'){
-//      toast.warn('Admins are not allowed');
-//     return redirect('/');
-//   }
-//   return null;
-// }
+
+export const loader = (store) => () =>{
+  const user = store.getState().userState.user
+   if (user?.role === 'seller' || user?.role ==='admin') {
+    toast.warn(' can not see cart');
+    return redirect('/');
+  }
+  return null;
+}
 
 const Cart = () => {
   const user = useSelector((state)=>state.userState.user);
+   
   const numItemsInCart =useSelector( (state)=> state.cartState.numItemsInCart)
-  // const user = store.getState().userState.user
   
   if(numItemsInCart === 0){
     return <SectionTitle text='Your cart is empty' />
@@ -25,7 +25,7 @@ const Cart = () => {
   return (
     <>
     <SectionTitle text='Shopping Cart'/>
-    <div className="mt-8 grid gap-8 lg:grid-cols-12">
+    <div className="align-element mt-8 grid gap-8 lg:grid-cols-12">
       <div className="lg:col-span-8">
         <CartItemsList/>
       </div>

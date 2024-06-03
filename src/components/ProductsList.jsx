@@ -3,11 +3,11 @@ import { formatPrice } from "../utils";
 
 const ProductsList = () => {
     const {products} =useLoaderData()
-    // console.log(products);
+    
   return (
-    <div className="mt-12 grid gap-y-8">
+    <div className=" align-element mt-12 grid gap-y-8">
         {products.map((product)=>{
-            console.log(product);
+            
             const {name,price,image ,company} =product;
             const dollarAmount = formatPrice(price)
 

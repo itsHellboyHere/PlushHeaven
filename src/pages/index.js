@@ -10,3 +10,7 @@ export { default as HomeLayout } from './HomeLayout';
 export { default as Error } from './Error';
 export { default as Checkout } from './Checkout';
 export { default as ProductCreate } from './ProductCreate';
+export { default as Privacy } from './Privacy'
+export { default as DashBoard } from './DashBoard';
+export { default as RegisterSeller } from './RegisterSeller'
+export { default as SellerProducts } from './SellerProducts'

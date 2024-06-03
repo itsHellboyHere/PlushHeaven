@@ -1,4 +1,4 @@
-import { formatPrice,genrateAmountOptions } from "../utils"
+import { formatPrice,generateAmountOptions } from "../utils"
 import {removeItem ,editItem}  from '../features/cart/cartSlice'
 import { useDispatch } from "react-redux"
 
@@ -38,7 +38,7 @@ const CartItem = ({cartItem}) => {
             <select name='amount' id="amount" className="mt-2 select select-base select-bordered select-xs"
             value={amount}
             onChange={handleAmount} >
-                {genrateAmountOptions(amount + 5)}
+                {generateAmountOptions(amount + 5)}
             </select>
          </div>
         {/* REMOVE */}

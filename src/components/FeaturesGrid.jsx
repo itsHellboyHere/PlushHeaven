@@ -1,5 +1,55 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { formatPrice } from "../utils";
+import styled from 'styled-components';
+
+// Styled Card component
+const Card = styled(Link)`
+  width: 100%;
+  height: 300px; /* Set a fixed height for the card */
+  background: #07182E;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  figure {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px 20px 0 0;
+    height: 80%; /* Adjust as needed */
+    width: 80%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintain aspect ratio */
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-title {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .text-secondary {
+    color: #ccc;
+  }
+`;
+
 
 const FeaturesGrid = () => {
   const { products } = useLoaderData();
@@ -11,19 +61,15 @@ const FeaturesGrid = () => {
         const dollarAmount = formatPrice(price);
 
         return (
-          <Link key={id} to={`/products/${id}`} className="card w-full glass">
+          <Card key={id} to={`/products/${id}`}>
             <figure>
-              <img className="rounded-xl h-64 md:h-48 w-full object-cover" src={image} alt={name} />
+              <img src={image} alt={name} />
             </figure>
-            <div className="card-body ">
-              <h2 className="card-title capitalize tracking-wider">{name}</h2>
-             
+            <div className="card-body">
+              <h2 className="card-title capitalize">{name}</h2>
               <p className="text-secondary">{dollarAmount}</p>
             </div>
-            <div className="card-actions justify-end">
-              {/* <button className="btn btn-primary">Buy Now</button> */}
-            </div>
-          </Link>
+          </Card>
         );
       })}
     </div>

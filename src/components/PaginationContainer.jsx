@@ -8,9 +8,7 @@ const PaginationContainer = () => {
   const {search,pathname} =useLocation()
   const navigate=useNavigate();
   const handlePageChange =(pageNumber) =>{
-    // console.log(search);
-    // console.log(pathname);
-    // console.log(pageNumber);
+
     const searchParams =new URLSearchParams(search);
     searchParams.set('page',pageNumber)
     navigate(`${pathname}?${searchParams.toString()}`)
@@ -20,7 +18,7 @@ const PaginationContainer = () => {
     return null
   }
   return (
-    <div className="mt-16 flex justify-end">
+    <div className="align-element mt-16 flex justify-end p-8">
       <div className="join">
         <button className="btn btn-xs sm:btn-md join-item" onClick={()=>{
           let prevPage = page-1;

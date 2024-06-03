@@ -1,6 +1,6 @@
 import { useState } from "react";
 const FormCheckbox = ({ label, name, defaultValue, size }) => {
-    const [checked, setChecked] = useState(defaultValue==='true');
+    const [checked, setChecked] = useState(defaultValue);
 
     const handleChange = (e) => {
         setChecked(e.target.checked);
